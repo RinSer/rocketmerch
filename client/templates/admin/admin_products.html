@@ -1,0 +1,23 @@
+<template name="admin_products">
+
+	<div class="css-admin-main-content">
+		<h1>Products</h1>
+		<div class="css-admin-products-add-new-form">
+			<i class="fa fa-times css-admin-form-close jq-admin-new-form-close"></i>
+			<h1>Add product</h1>
+			{{> admin_product_form}}
+		</div>
+		<div class="css-admin-products-all">
+			{{#each product in products}}
+				{{> admin_product product=product}}
+			{{/each}}
+		</div>
+		<div class="css-admin-products-add">
+			<button class="css-admin-add-button jq-admin-add-button">
+				<span>Add product</span>
+				<i class="fa fa-plus css-admin-plus"></i>
+			</button>
+		</div>
+	</div>
+
+</template>

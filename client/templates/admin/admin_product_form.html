@@ -1,0 +1,25 @@
+<template name="admin_product_form">
+
+	<form class="css-admin-product-form js-admin-product-form" id="admin-product-update-{{product._id}}">
+
+		<p>Category:</p>
+		<input type="text" name="product_category" value="{{product.category}}">
+		<br>
+		<p>Title:</p>
+		<input type="text" name="product_title" value="{{product.title}}">
+		<br>
+		<p>Image:</p>
+		<input type="text" class="js-admin-product-img" name="product_image" value="{{product.img}}" >
+		<input type="file" name="product_image_file" class="js-admin-product-image" >
+		<br>
+		<p>Description:</p>
+		<textarea class="css-admin-form-description" name="product_description" form="admin-product-update-{{product._id}}">{{product.description}}</textarea>
+		<br>
+		<p>Quantity:</p>
+		<input type="number" name="product_quantity" value="{{product.quantity}}">
+		<br>
+		<input class="css-admin-form-submit" type="submit" name="submit" value="Save">
+
+	</form>
+
+</template>

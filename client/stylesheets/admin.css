@@ -1,0 +1,301 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	color: #222;
+
+}
+
+a {
+
+	color: #fff;
+	text-decoration: none;
+
+}
+
+a:hover {
+
+	color: red;
+	text-decoration: none;
+
+}
+
+h1 {
+	text-align: center;
+	color: #333;
+}
+
+/*** Header ***/
+
+.css-admin-nav {
+
+	width: 100%;
+	height: 100px;
+	background-color: #222;
+	position: fixed;
+	top: 0;
+	right: 0;
+	-webkit-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.88);
+	-moz-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.88);
+	box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.88);
+	
+}
+
+.css-admin-nav-ul {
+
+	display: block;
+	margin: 0;
+	color: #fff;
+	text-align: center;
+	padding-top: 40px;
+	padding-left: 0;
+
+}
+
+
+.css-admin-nav-ul li {
+
+	display: inline;
+	text-align: center;
+	padding: 25px;
+
+}
+
+.css-admin-nav-ul li a {
+
+	font-size: 1.2em;
+	font-weight: bold;
+
+}
+
+/*** Admin Login Form ***/
+
+.css-admin-login {
+
+	float: right;
+	clear: left;
+	color: white;
+	position: fixed;
+	right: 25px;
+	top: 40px;
+
+}
+
+.css-admin-login > p {
+
+	margin: 0;
+
+}
+
+.css-admin-signIn {
+
+	cursor: pointer;
+
+}
+
+.css-admin-signIn:hover {
+
+	color: red;
+
+}
+
+.css-admin-signIn-form {
+
+	background-color: #222222;
+	border: 1px solid white;
+	padding: 5px;
+	text-align: center;
+	position: fixed;
+	right: 25px;
+
+}
+
+.css-admin-signIn-button {
+
+	background-color: #fff;
+	color: #222222;
+	border: 1px solid black;
+	font-size: 1em;
+	cursor: pointer;
+
+}
+
+.css-admin-signIn-button:hover {
+
+	background-color: red;
+	color: white;
+	border: 1px solid #222;
+
+}
+
+.css-admin-signOut {
+
+	text-align: right;
+	cursor: pointer;
+
+}
+
+.css-admin-signOut:hover {
+
+	color: red;
+
+}
+
+/*** Admin Main Content ***/
+.css-admin-main-content {
+
+	margin: 125px auto;
+	width: 80%;
+
+}
+
+/*** admin_products template ***/
+.css-admin-products-all {
+
+	width: 90%;
+	float: left;
+
+}
+
+.css-admin-products-add-new-form {
+
+	display: none;
+	border: 1px solid #aaa;
+	text-align: center;
+
+}
+
+.css-admin-products-add-new-form i {
+
+	font-size: 3em;
+
+}
+
+.css-admin-product {
+
+	width: 33.33%;
+	float: left;
+	border: 1px solid #aaa;
+	text-align: center;
+
+}
+
+.css-admin-product:nth-child(3n+1) {
+	clear: both;
+}
+
+.css-admin-product:hover {
+
+	border: 1px solid #222;
+	cursor: pointer;
+
+}
+
+.css-admin-products-add {
+
+	width: 10%;
+	float: left;
+
+}
+
+.css-admin-product-form {
+
+	margin-bottom: 50px;
+
+}
+
+.css-admin-form-close {
+
+	float: right;
+	padding: 5px;
+
+}
+
+.css-admin-form-close:hover {
+
+	color: red;
+	cursor: pointer;
+
+}
+
+.css-admin-product-form input {
+
+	width: 80%;
+	border: 1px solid #aaa;
+
+}
+
+.css-admin-form-description {
+
+	width: 80%;
+
+}
+
+.css-admin-form-submit {
+
+	height: 50px;
+	background-color: #222;
+	color: #fff;
+	font-size: 1.5em;
+	margin-top: 25px;
+
+}
+
+.css-admin-form-submit:hover {
+
+	color: red;
+	border-color: #fff!important;
+	cursor: pointer;
+
+}
+
+.css-admin-add-button {
+
+	background-color: #fff;
+	color: rgba(2, 2, 2, 0.25);
+	height: 100px;
+	border-color: rgba(2, 2, 2, 0.25);
+
+}
+
+.css-admin-add-button:hover {
+
+	cursor: pointer;
+	color: rgba(2, 2, 2, 0.75);
+	border-color: rgba(2, 2, 2, 0.55);
+
+}
+
+.css-admin-plus {
+
+	font-size: 5em!important;
+
+}
+
+.css-admin-delete-button {
+
+	background-color: red;
+	color: white;
+	width: 50%;
+	height: 50px;
+	margin: 25px auto 0 auto;
+	font-size: 1.5em;
+	border-color: rgba(255, 255, 255, 0.25);
+	text-align: center;
+	clear: both;
+
+}
+
+.css-admin-delete-button:hover {
+
+	cursor: pointer;
+	color: rgba(2, 2, 2, 0.75);
+	border-color: rgba(2, 2, 2, 0.55);
+
+}

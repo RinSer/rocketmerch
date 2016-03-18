@@ -1,0 +1,16 @@
+<template name="admin_product">
+
+		<div id="{{product._id}}" class="css-admin-product">
+
+			{{#unless update}}
+				{{> admin_product_description product=product}}
+			{{else}}
+				<i class="fa fa-times css-admin-form-close js-admin-form-close"></i>
+				<button class="css-admin-delete-button js-admin-delete-button">Delete</button>
+				<h1>Update product</h1>
+				{{> admin_product_form product=product}}
+			{{/unless}}
+
+		</div>
+
+</template>
