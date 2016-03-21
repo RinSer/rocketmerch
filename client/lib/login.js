@@ -23,6 +23,12 @@ Template.signIn.helpers({
     }
   },
 
+  userName: function() {
+    if( Meteor.user()) {
+      return Meteor.user().name;
+    }
+  },
+
 });
 
 // SignIn template events

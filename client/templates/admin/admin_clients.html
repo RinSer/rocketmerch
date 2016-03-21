@@ -1,0 +1,15 @@
+<template name="admin_clients">
+
+	<div class="css-admin-main-content">
+		<h1>Clients</h1>
+		<div class="css-admin-clients-all">
+			{{#each client in clients}}
+				<div class="css-admin-client">
+					<h3>Name: {{client.name}}</h3>
+					<p>Email: {{client.emails.[0].address}}</p>
+				</div>
+			{{/each}}
+		</div>
+	</div>
+
+</template>

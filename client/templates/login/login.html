@@ -1,6 +1,6 @@
 <template name="signIn">
 	{{#if currentUser}}
-		<p>{{userEmail}}</p>
+		<p>{{userName}}</p>
 		<p class="css-admin-signOut js-signOut">Sign Out</p>
 	{{else}}
 		{{#if closedForm}}
@@ -35,4 +35,10 @@
         <p>Password: <input type="password" name="password"></p>
         <p><input type="submit" value="Login" class="css-admin-signIn-button"></p>
     </form>
+</template>
+
+<template name="adminLogin">
+	<div class="css-adminLogin">
+		{{> login}}
+	</div>
 </template>

@@ -1,0 +1,43 @@
+<template name="admin_settings">
+
+	<div class="css-admin-main-content">
+		<h1>Settings</h1>
+		<div class="css-admin-set-users">
+			<h2>Users</h2>
+			<div class="css-admin-users-all">
+				{{#each user in users}}
+					{{> admin_user user=user}}
+				{{/each}}
+			</div>
+			<div class="css-admin-users-add">
+				{{#if currentUser.admin}}
+					<button class="css-admin-add-user-button jq-admin-add-user-button">
+						<span>Add user</span>
+						<i class="fa fa-plus css-admin-plus"></i>
+					</button>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+
+</template>
+
+<template name="admin_user">
+
+	<div class="css-admin-user">
+		{{#unless update}}
+			<div class="js-admin-user">
+				<h3>Name: {{user.name}}</h3>
+				<p>Email: {{user.emails.[0].address}}</p>
+			</div>
+		{{else}}
+			<i class="fa fa-times css-admin-form-close js-admin-user-form-close"></i>
+			<div class="css-admin-user-form-wrap">
+				<h3>Update user</h3>
+				{{> admin_user_form user=user}}
+				<button class="css-admin-delete-button js-admin-delete-button">Delete</button>
+			</div>
+		{{/unless}}
+	</div>
+
+</template>

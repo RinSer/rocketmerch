@@ -41,9 +41,9 @@ h1 {
 	position: fixed;
 	top: 0;
 	right: 0;
-	-webkit-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.88);
-	-moz-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.88);
-	box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.88);
+	-webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.88);
+	-moz-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.88);
+	box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.88);
 	
 }
 
@@ -83,7 +83,7 @@ h1 {
 	color: white;
 	position: fixed;
 	right: 25px;
-	top: 40px;
+	top: 30px;
 
 }
 
@@ -147,11 +147,36 @@ h1 {
 
 }
 
+.css-adminLogin {
+
+	margin: 50px auto;
+	padding: 10px;
+	border: 1px solid #aaa;
+	width: 80%;
+	text-align: center;
+
+}
+
 /*** Admin Main Content ***/
 .css-admin-main-content {
 
 	margin: 125px auto;
 	width: 80%;
+
+}
+
+/*** admin_clients template ***/
+.css-admin-client {
+
+	padding: 10px;
+	border: 1px solid #aaa;
+	cursor: pointer;
+
+}
+
+.css-admin-client:hover {
+
+	border: 1px solid #222;
 
 }
 
@@ -297,5 +322,76 @@ h1 {
 	cursor: pointer;
 	color: rgba(2, 2, 2, 0.75);
 	border-color: rgba(2, 2, 2, 0.55);
+
+}
+
+/*** admin_settings ***/
+.css-admin-set-users > h2 {
+
+	text-align: center;
+
+}
+
+.css-admin-users-all {
+
+	width: 95%;
+	float: left;
+
+}
+
+.css-admin-user {
+
+	padding: 10px;
+	border: 1px solid #aaa;
+
+}
+
+.css-admin-user:hover {
+
+	cursor: pointer;
+	border: 1px solid #222;
+
+}
+
+.css-admin-users-add {
+
+	width: 5%;
+	float: left;
+
+}
+
+.css-admin-add-user-button {
+
+	background-color: #fff;
+	color: rgba(2, 2, 2, 0.25);
+	border-color: rgba(2, 2, 2, 0.25);
+
+}
+
+.css-admin-add-user-button:hover {
+
+	cursor: pointer;
+	color: rgba(2, 2, 2, 0.75);
+	border-color: rgba(2, 2, 2, 0.55);
+
+}
+
+.css-admin-plus {
+
+	font-size: 5em!important;
+
+}
+
+/*** admin_user_form ***/
+.css-admin-user-form-wrap {
+
+	text-align: center;
+	padding-bottom: 50px;
+
+}
+
+.css-admin-user-form > input {
+
+	width: 80%;
 
 }

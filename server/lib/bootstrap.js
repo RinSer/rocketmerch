@@ -1,5 +1,65 @@
 Meteor.startup(function () {
     // code to run on server at startup
+    // Create dev users
+    const init_users = [
+        // Admin user
+        {
+            name: "admin",
+            email: "serj.dukareff@gmail.com",
+            password: "rocket",
+            admin: true
+        },
+        // Seller users
+        {
+            name: "seller1",
+            email: "seller1@merch.com",
+            password: "seller1",
+            seller: true
+        },
+        {
+            name: "seller2",
+            email: "seller2@merch.com",
+            password: "seller2",
+            seller: true
+        },
+        // Client users
+        {
+            name: "test1",
+            email: "test1@test.com",
+            password: "123",
+            client: true
+        },
+        {
+            name: "test2",
+            email: "test2@test.com",
+            password: "123",
+            client: true
+        },
+        {
+            name: "test3",
+            email: "test3@test.com",
+            password: "123",
+            client: true
+        },
+        {
+            name: "test4",
+            email: "test4@test.com",
+            password: "123",
+            client: true
+        },
+        {
+            name: "test5",
+            email: "test5@test.com",
+            password: "123",
+            client: true
+        },
+    ];
+    if (Meteor.users.find().count() === 0) {
+        _.each(init_users, function(user) {
+            Accounts.createUser(user);
+            console.log("Created user "+user.name);
+        });
+    }
     // Create dev collection elements
     const init_products = [
     	{
