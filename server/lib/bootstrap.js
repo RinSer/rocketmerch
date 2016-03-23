@@ -133,4 +133,14 @@ Meteor.startup(function () {
             console.log("Added "+doc.title+" to Products.");
         });
     };
+    // Create dev Info data
+    const init_info = {
+        title: "RocketMerch",
+        address: "Moscow, Red Square, 25",
+        description: "Brand new engin for ecommerce that will conquer the world."
+    };
+    if (Info.find().count() === 0) {
+        Info.insert(init_info);
+        console.log("Added initial info.");
+    };
   });

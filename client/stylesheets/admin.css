@@ -325,6 +325,21 @@ h1 {
 
 }
 
+/*** admin_info ***/
+.css-admin-info {
+
+	padding: 10px;
+	border: 1px solid #aaa;
+	cursor: pointer;
+
+}
+
+.css-admin-info:hover {
+
+	border: 1px solid #222;
+
+}
+
 /*** admin_settings ***/
 .css-admin-set-users > h2 {
 
@@ -393,5 +408,22 @@ h1 {
 .css-admin-user-form > input {
 
 	width: 80%;
+
+}
+
+.css-admin-new-user-form {
+
+	display: none;
+	border: 1px solid #aaa;
+	text-align: center;
+	padding-bottom: 50px;
+
+}
+
+.css-admin-user-form-notification {
+
+	display: none;
+	color: red;
+	padding: 20px;
 
 }

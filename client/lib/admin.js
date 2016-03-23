@@ -4,13 +4,28 @@
 Template.admin_products.onRendered(function() {
 
 	this.$('.jq-admin-add-button').click(function() {
-		$('.css-admin-products-add-new-form').animate({width:'toggle'}, "slow");
+		$('.css-admin-products-add-new-form').animate({width:'toggle'}, 'slow');
 		$('.jq-admin-add-button').hide();
 	});
 
 	this.$('.jq-admin-new-form-close').click(function() {
 		$('.css-admin-products-add-new-form').animate({width:'toggle'});
 		$('.jq-admin-add-button').show();
+	});
+
+});
+
+// On rendered admin_settings
+Template.admin_settings.onRendered(function() {
+
+	this.$('.jq-admin-add-user-button').click(function() {
+		$('.css-admin-new-user-form').animate({width:'toggle'}, 'slow');
+		$('.jq-admin-add-user-button').hide();
+	});
+
+	this.$('.jq-admin-new-user-close').click(function() {
+		$('.css-admin-new-user-form').animate({width:'toggle'});
+		$('.jq-admin-add-user-button').show();
 	});
 
 });
@@ -79,6 +94,23 @@ Template.admin_user.helpers({
 
 		const user_id = Template.instance().data.user._id;
 		return Session.get(user_id+"_update_user");
+
+	}
+
+});
+
+// Helpers for admin_info
+Template.admin_info.helpers({
+
+	info:function() {
+
+		return Info.findOne();
+
+	},
+
+	update:function() {
+
+		return Session.get("update_info");
 
 	}
 
@@ -184,6 +216,27 @@ Template.admin_product_form.events({
 
 });
 
+// Events for admin_info
+Template.admin_info.events({
+
+	'click .js-admin-info-update':function(event) {
+
+		event.preventDefault();
+
+		Session.set('update_info', true);
+
+	},
+
+	'click .js-admin-info-form-close':function(event) {
+
+		event.preventDefault();
+
+		Session.set('update_info', false);
+		
+	}
+
+});
+
 // Events for admin_user
 Template.admin_user.events({
 
@@ -205,6 +258,15 @@ Template.admin_user.events({
 
 	},
 
+	'click .js-admin-delete-user-button':function(event) {
+
+		event.preventDefault();
+
+		const id = this.user._id;
+		Meteor.call('deleteUser', id);
+
+	}
+
 });
 
 // Events for admin_user_form
@@ -217,36 +279,61 @@ Template.admin_user_form.events({
 		var name = event.target.user_name.value;
 		var email = event.target.user_email.value;
 		var password = event.target.user_password.value;
-		var group = event.target.user_group.value;
+		var password_confirmation = event.target.user_password_confirmation.value;
 		var date = new Date();
+
+		if (password !== password_confirmation) {
+			$('.css-admin-user-form-notification').html('Password should match its confirmation!');
+			$('.css-admin-user-form-notification').show();
+			return
+		}
 
 		var new_user = {
 			name: name,
 			email: email,
 			password: password,
-			admin: false,
-			seller: false,
-			client: false,
 			updatedAt: date
 		};
 
-		new_user[group] = true;
+		if (Meteor.user().admin) {
+			var group = event.target.user_group.value;
+			if (group) {
+				new_user.admin = false;
+				new_user.seller = false;
+				new_user.client = false;
+				new_user[group] = true;
+			}
+		}
 
 		if (this.user) {
 			const id = this.user._id;
 
-			console.log('updating user');
-			Meteor.users.update({_id:id}, {$set: new_user});
-
-	        Session.set(id+"_update_user", false);
+			Meteor.call('updateUser', id, new_user, function(err, data) {
+				if (err) {
+					$('.css-admin-user-form-notification').html(err.reason);
+					$('.css-admin-user-form-notification').show();
+					return
+				} else {
+					Session.set(id+"_update_user", false);
+				}
+			});
 		} else {
-			Meteor.users.insert({new_user});
-
-			//$('.css-admin-products-add-new-form').animate({width:'toggle'});
-			//$('.jq-admin-add-button').show();
+			if (!group) {
+				$('.css-admin-user-form-notification').html('Please choose the user group');
+				$('.css-admin-user-form-notification').show();
+				return
+			}
+			Meteor.call('addUser', new_user, function(err, data) {
+				if (err) {
+					$('.css-admin-user-form-notification').html(err.reason);
+					$('.css-admin-user-form-notification').show();
+					return
+				} else {
+					$('.css-admin-new-user-form').animate({width:'toggle'});
+					$('.jq-admin-add-user-button').show();
+				}
+			});
 		}
 	},
-
-
 
 });

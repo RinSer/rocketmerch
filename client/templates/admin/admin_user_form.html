@@ -1,6 +1,6 @@
 <template name="admin_user_form">
 
-	<form class="css-admin-user-form js-admin-us-form" id="admin-user-update-{{user._id}}">
+	<form class="css-admin-user-form js-admin-user-form" id="admin-user-update-{{user._id}}">
 
 		<p>Name:</p>
 		<input type="text" name="user_name" value="{{user.name}}">
@@ -11,6 +11,10 @@
 		<p>Password:</p>
 		<input type="password" name="user_password">
 		<br>
+		<p>Password Confirmation:</p>
+		<input type="password" name="user_password_confirmation">
+		<br>
+		<div class="css-admin-user-form-notification">Mistake!</div>
 		{{#if currentUser.admin}}
 			<p>Group:</p>
 			<p>Admin<input type="radio" name="user_group" value="admin"></p>

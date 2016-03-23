@@ -1,0 +1,26 @@
+<template name="admin_info">
+
+	<div class="css-admin-main-content">
+		<h1>Info</h1>
+		<div class="css-admin-info">
+			{{#if update}}
+				<i class="fa fa-times css-admin-form-close js-admin-info-form-close"></i>
+				<h3>Update shop information.</h3>
+				{{> admin_info_form info=info}}
+			{{else}}
+				<div class="js-admin-info-update">
+					<h2>Title: {{info.title}}</h2>
+					<p>Address: {{info.address}}</p>
+					<p>Description: {{info.description}}</p>
+				</div>
+			{{/if}}
+		</div>
+	</div>
+	
+</template>
+
+<template name="admin_info_form">
+
+	
+
+</template>

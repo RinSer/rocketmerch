@@ -13,6 +13,13 @@ Meteor.publish('clientsData', function() {
 // Publish products data
 Meteor.publish('productsData', function() {
 
-	return Products.find();
+	return Products.find({}, {fields: {category: 1, title: 1, description: 1, img: 1, quantity: 1}});
+
+});
+
+// Publish info data
+Meteor.publish('infoData', function() {
+
+	return Info.find({}, {fields: {title: 1, address: 1, description: 1}});
 
 });

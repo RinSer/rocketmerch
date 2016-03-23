@@ -6,3 +6,6 @@ Meteor.subscribe('clientsData');
 
 // Subscribe to productsData
 Meteor.subscribe('productsData');
+
+// Subscribe to infoData
+Meteor.subscribe('infoData');
