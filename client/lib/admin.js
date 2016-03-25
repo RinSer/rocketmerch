@@ -30,6 +30,18 @@ Template.admin_settings.onRendered(function() {
 
 });
 
+// Helpers for admin_orders
+Template.admin_orders.helpers({
+
+	// Show all orders
+	orders:function() {
+
+		return Orders.find({});
+
+	}
+
+});
+
 // Helpers for admin_products
 Template.admin_products.helpers({
 
@@ -144,7 +156,7 @@ Template.admin_product.events({
 		event.preventDefault();
 
 		const product_id = this.product._id;
-		Products.remove(product_id);
+		Meteor.call('deleteProduct', product_id);
 
 	},
 
@@ -164,29 +176,23 @@ Template.admin_product_form.events({
 		var quantity = event.target.product_quantity.value;
 		var date = new Date();
 
+		var new_product = {
+			category: category,
+			title: title,
+			img: img,
+			description: description,
+			quantity: quantity,
+			updatedAt: date
+		};
+
 		if (this.product) {
 			const id = this.product._id;
 
-			Products.update({_id:id}, {$set: {
-					category: category,
-					title: title,
-					img: img,
-					description: description,
-					quantity: quantity,
-					updatedAt: date
-				}
-			});
+			Meteor.call('updateProduct', id, new_product);
 
 	        Session.set(id+"_update", false);
 		} else {
-			Products.insert({
-				category: category,
-				title: title,
-				img: img,
-				description: description,
-				quantity: quantity,
-				createdAt: date
-			});
+			Meteor.call('addProduct', new_product);
 
 			$('.css-admin-products-add-new-form').animate({width:'toggle'});
 			$('.jq-admin-add-button').show();
@@ -233,6 +239,32 @@ Template.admin_info.events({
 
 		Session.set('update_info', false);
 		
+	}
+
+});
+
+// Events for admin_info_form
+Template.admin_info_form.events({
+
+	'submit .js-admin-info-form':function(event) {
+
+
+		event.preventDefault();
+
+		var title = event.target.info_title.value;
+		var address = event.target.info_address.value;
+		var description = event.target.info_description.value;
+
+		var new_info = {
+			title: title,
+			address: address,
+			description: description
+		};
+
+		Meteor.call('updateInfo', new_info);
+
+		Session.set('update_info', false);
+
 	}
 
 });

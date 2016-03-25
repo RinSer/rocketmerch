@@ -17,9 +17,23 @@ Meteor.publish('productsData', function() {
 
 });
 
+// Publish orders data
+Meteor.publish('ordersData', function() {
+
+	return Orders.find({}, {fields: {client: 1, products: 1, status: 1}});
+
+});
+
 // Publish info data
 Meteor.publish('infoData', function() {
 
 	return Info.find({}, {fields: {title: 1, address: 1, description: 1}});
+
+});
+
+// Publish images data
+Meteor.publish('imagesData', function() {
+
+	return Images.find({});
 
 });

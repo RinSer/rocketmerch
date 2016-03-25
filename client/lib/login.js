@@ -74,13 +74,14 @@ Template.register.events({
 
 // Login template events
 Template.login.events({
-  'submit form': function(event){
+  'submit form': function(event, template){
     event.preventDefault();
-    var email = $('[name=email]').val();
-    var password = $('[name=password').val();
-    Meteor.loginWithPassword(email, password, function(error) {
-      if(error){
-        console.log(error.reason);
+    var email = template.find('[name=email]').value;
+    var password = template.find('[name=password]').value;
+    Meteor.loginWithPassword(email, password, function(err, data) {
+      if(err){
+        $('.js-login-error').html(err.reason);
+        $('.js-login-error').show();
       }
     });
     Session.set('open_signIn', false);

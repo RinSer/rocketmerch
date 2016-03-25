@@ -27,31 +27,36 @@ Meteor.startup(function () {
             name: "test1",
             email: "test1@test.com",
             password: "123",
-            client: true
+            client: true,
+            address: "test1 address"
         },
         {
             name: "test2",
             email: "test2@test.com",
             password: "123",
-            client: true
+            client: true,
+            address: "test2 address"
         },
         {
             name: "test3",
             email: "test3@test.com",
             password: "123",
-            client: true
+            client: true,
+            address: "test3 address"
         },
         {
             name: "test4",
             email: "test4@test.com",
             password: "123",
-            client: true
+            client: true,
+            address: "test4 address"
         },
         {
             name: "test5",
             email: "test5@test.com",
             password: "123",
-            client: true
+            client: true,
+            address: "test5 address"
         },
     ];
     if (Meteor.users.find().count() === 0) {
@@ -143,4 +148,120 @@ Meteor.startup(function () {
         Info.insert(init_info);
         console.log("Added initial info.");
     };
-  });
+    // Create orders data
+    const product1_id = Products.findOne({title: "One_one"})._id;
+    const product2_id = Products.findOne({title: "Two_one"})._id;
+    const product3_id = Products.findOne({title: "Three_one"})._id;
+    const product4_id = Products.findOne({title: "One_two"})._id;
+    const product5_id = Products.findOne({title: "Two_two"})._id;
+    const customer1_id = Meteor.users.findOne({name: "test1"})._id;
+    const customer2_id = Meteor.users.findOne({name: "test2"})._id;
+    const customer3_id = Meteor.users.findOne({name: "test3"})._id;
+    const init_orders = [
+        {
+            client: customer1_id,
+            products: [
+                {
+                    title:product1_id,
+                    quantity: 2
+                }
+            ],
+            status: "new"
+        },
+        {
+            client: customer2_id,
+            products: [
+                {
+                    title:product2_id,
+                    quantity: 1
+                },
+                {
+                    title:product3_id,
+                    quantity: 1
+                }
+            ],
+            status: "new"
+        },
+        {
+            client: customer3_id,
+            products: [
+                {
+                    title: product4_id,
+                    quantity: 1
+                },
+                {
+                    title: product5_id,
+                    quantity: 3
+                },
+                {
+                    title: product1_id,
+                    quantity: 5
+                }
+            ],
+            status: "new"
+        },
+        {
+            client: customer1_id,
+            products: [
+                {
+                    title:product2_id,
+                    quantity: 1
+                },
+                {
+                    title:product3_id,
+                    quantity: 1
+                }
+            ],
+            status: "pending"
+        },
+        {
+            client: customer2_id,
+            products: [
+                {
+                    title:product2_id,
+                    quantity: 1
+                },
+                {
+                    title:product3_id,
+                    quantity: 1
+                }
+            ],
+            status: "pending"
+        },
+        {
+            client: customer3_id,
+            products: [
+                {
+                    title:product2_id,
+                    quantity: 1
+                },
+                {
+                    title:product3_id,
+                    quantity: 1
+                }
+            ],
+            status: "delivered"
+        },
+        {
+            client: customer1_id,
+            products: [
+                {
+                    title:product2_id,
+                    quantity: 1
+                },
+                {
+                    title:product3_id,
+                    quantity: 1
+                }
+            ],
+            status: "delivered"
+        }
+    ];
+    if (Orders.find().count() === 0) {
+        _.each(init_orders, function(doc) {
+            Orders.insert(doc);
+            console.log("Added client "+doc.client+" order.");
+        });
+    };
+
+});

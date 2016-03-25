@@ -21,6 +21,20 @@
 
 <template name="admin_info_form">
 
-	
+	<form class="css-admin-info-form js-admin-info-form" id="admin-info-update">
+
+		<p>Title:</p>
+		<input type="text" name="info_title" value="{{info.title}}">
+		<br>
+		<p>Address:</p>
+		<textarea class="css-admin-info-address" name="info_address" form="admin-info-update">{{info.address}}</textarea>
+		<br>
+		<p>Description:</p>
+		<textarea class="css-admin-info-description" name="info_description" form="admin-info-update">{{info.description}}</textarea>
+		<br>
+		<input class="css-admin-form-submit" type="submit" name="submit" value="Save">
+		<br>
+
+	</form>
 
 </template>

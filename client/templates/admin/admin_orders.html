@@ -1,5 +1,20 @@
 <template name="admin_orders">
 
-	<h1>Here are the orders!</h1>
+	<div class="css-admin-main-content">
+		<h1>Orders</h1>
+		<div class="css-admin-orders">
+			{{#each order in orders}}
+				<div class="css-admin-order">
+					<h2>Client: {{order.client}}</h2>
+					<h3>Status: {{order.status}}</h3>
+					<ul>
+						{{#each product in order.products}}
+							<li>Title: {{product.title}}, Quantity: {{product.quantity}}</li>
+						{{/each}}
+					</ul>
+				</div>
+			{{/each}}
+		</div>
+	</div>
 
 </template>

@@ -21,3 +21,61 @@
 	</div>
 
 </template>
+
+
+<template name="admin_product">
+
+		<div id="{{product._id}}" class="css-admin-product">
+
+			{{#unless update}}
+				{{> admin_product_description product=product}}
+			{{else}}
+				<i class="fa fa-times css-admin-form-close js-admin-form-close"></i>
+				<button class="css-admin-delete-button js-admin-delete-button">Delete</button>
+				<h1>Update product</h1>
+				{{> admin_product_form product=product}}
+			{{/unless}}
+
+		</div>
+
+</template>
+
+
+<template name="admin_product_description">
+
+	<div class="js-admin-product">
+		<h3>Category: {{product.category}}</h3>
+		<h2>{{product.title}}</h2>
+		<img src="{{product.img}}" width="80%" alt="{{product.title}}">
+		<p>{{product.description}}</p>
+		<p>Quantity: {{product.quantity}}</p>
+	</div>
+
+</template>
+
+
+<template name="admin_product_form">
+
+	<form class="css-admin-product-form js-admin-product-form" id="admin-product-update-{{product._id}}">
+
+		<p>Category:</p>
+		<input type="text" name="product_category" value="{{product.category}}">
+		<br>
+		<p>Title:</p>
+		<input type="text" name="product_title" value="{{product.title}}">
+		<br>
+		<p>Image:</p>
+		<input type="text" class="js-admin-product-img" name="product_image" value="{{product.img}}" >
+		<input type="file" name="product_image_file" class="js-admin-product-image" >
+		<br>
+		<p>Description:</p>
+		<textarea class="css-admin-form-description" name="product_description" form="admin-product-update-{{product._id}}">{{product.description}}</textarea>
+		<br>
+		<p>Quantity:</p>
+		<input type="number" name="product_quantity" value="{{product.quantity}}">
+		<br>
+		<input class="css-admin-form-submit" type="submit" name="submit" value="Save">
+
+	</form>
+
+</template>

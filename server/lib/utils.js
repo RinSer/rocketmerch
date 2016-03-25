@@ -4,6 +4,7 @@ Accounts.onCreateUser(function(options, user) {
   user.admin = options.admin || false;
   user.seller = options.seller || false;
   user.client = options.client || false;
+  user.address = options.address || false;
   return user;
 });
 
@@ -14,6 +15,7 @@ Meteor.publish('userData', function() {
 		name: 1,
 		admin: 1,
 		seller: 1,
-		client: 1
+		client: 1,
+		address: 1
 	}});
 });

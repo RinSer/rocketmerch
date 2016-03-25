@@ -6,5 +6,29 @@
 
 	{{> yield region="main"}}
 
+</template>
 
+
+<template name="admin_header">
+
+	<nav class="css-admin-nav">
+		<div class="css-admin-login">
+			{{> signIn}}
+		</div>
+		<ul class="css-admin-nav-ul">
+			<li><a id="orders" href="/admin">Orders</a></li>
+			<li><a id="products" href="/admin/products">Products</a></li>
+			<li><a id="clients" href="/admin/clients">Clients</a></li>
+			<li><a id="info" href="/admin/info">Info</a></li>
+			<li><a id="settings" href="/admin/settings">Settings</a></li>
+		</ul>
+	</nav>
+
+</template>
+
+
+<template name="adminLogin">
+	<div class="css-adminLogin">
+		{{> login}}
+	</div>
 </template>
