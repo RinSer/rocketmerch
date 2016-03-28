@@ -71,6 +71,7 @@ Meteor.startup(function () {
     		category: "one",
     		title: "One_one",
     		description: "Your product description goes here.",
+            price: 101,
     		img: "/600x400.png",
             quantity: 5,
             createdAt: new Date(),
@@ -79,6 +80,7 @@ Meteor.startup(function () {
     		category: "one",
     		title: "Two_one",
     		description: "Your product description goes here.",
+            price: 102,
     		img: "/600x400.png",
             quantity: 4,
             createdAt: new Date(),
@@ -87,6 +89,7 @@ Meteor.startup(function () {
     		category: "one",
     		title: "Three_one",
     		description: "Your product description goes here.",
+            price: 103,
     		img: "/600x400.png",
             quantity: 3,
             createdAt: new Date(),
@@ -95,6 +98,7 @@ Meteor.startup(function () {
     		category: "one",
     		title: "Four_one",
     		description: "Your product description goes here.",
+            price: 104,
     		img: "/600x400.png",
             quantity: 2,
             createdAt: new Date(),
@@ -103,6 +107,7 @@ Meteor.startup(function () {
     		category: "one",
     		title: "Five_one",
     		description: "Your product description goes here.",
+            price: 105,
     		img: "/600x400.png",
             quantity: 12,
             createdAt: new Date(),
@@ -111,6 +116,7 @@ Meteor.startup(function () {
     		category: "two",
     		title: "One_two",
     		description: "Your product description goes here.",
+            price: 201,
     		img: "/600x400.png",
             quantity: 1,
             createdAt: new Date(),
@@ -119,6 +125,7 @@ Meteor.startup(function () {
     		category: "two",
     		title: "Two_two",
     		description: "Your product description goes here.",
+            price: 202,
     		img: "/600x400.png",
             quantity: 0,
             createdAt: new Date(),
@@ -126,6 +133,7 @@ Meteor.startup(function () {
     	{
     		category: "two",
     		title: "Three_two",
+            price: 203,
     		description: "Your product description goes here.",
     		img: "/600x400.png",
             quantity: 10,
@@ -160,6 +168,7 @@ Meteor.startup(function () {
     const init_orders = [
         {
             client: customer1_id,
+            address: "index, state, city, street, 25",
             products: [
                 {
                     title:product1_id,
@@ -170,6 +179,7 @@ Meteor.startup(function () {
         },
         {
             client: customer2_id,
+            address: "index, state, city, street, 25",
             products: [
                 {
                     title:product2_id,
@@ -184,6 +194,7 @@ Meteor.startup(function () {
         },
         {
             client: customer3_id,
+            address: "index, state, city, street, 25",
             products: [
                 {
                     title: product4_id,
@@ -202,6 +213,7 @@ Meteor.startup(function () {
         },
         {
             client: customer1_id,
+            address: "index, state, city, street, 25",
             products: [
                 {
                     title:product2_id,
@@ -216,6 +228,7 @@ Meteor.startup(function () {
         },
         {
             client: customer2_id,
+            address: "index, state, city, street, 25",
             products: [
                 {
                     title:product2_id,
@@ -230,6 +243,7 @@ Meteor.startup(function () {
         },
         {
             client: customer3_id,
+            address: "index, state, city, street, 25",
             products: [
                 {
                     title:product2_id,
@@ -244,6 +258,7 @@ Meteor.startup(function () {
         },
         {
             client: customer1_id,
+            address: "index, state, city, street, 25",
             products: [
                 {
                     title:product2_id,

@@ -4,12 +4,35 @@
 		<h1>Clients</h1>
 		<div class="css-admin-clients-all">
 			{{#each client in clients}}
-				<div class="css-admin-client">
-					<h3>Name: {{client.name}}</h3>
-					<p>Email: {{client.emails.[0].address}}</p>
-				</div>
+				{{> admin_client client=client}}
 			{{/each}}
 		</div>
+	</div>
+
+</template>
+
+<template name="admin_client">
+
+	<div class="css-admin-client">
+		<h3>Name: {{client.name}}</h3>
+		<p>Emails: {{client.emails.[0].address}}</p>
+		<p>Address: {{client.address}}</p>
+		{{#unless see_orders}}
+			<button class="css-admin-client-orders-button js-admin-client-show-orders">Orders</button>
+		{{else}}
+			<div class="css-admin-client-orders">
+				<i class="fa fa-times css-admin-form-close js-admin-client-close-orders"></i>
+				<div class="css-admin-client-orders-all">
+					{{#if orders}}
+						{{#each order in orders}}
+							{{> admin_order order=order}}
+						{{/each}}
+					{{else}}
+						<h2>No orders found</h2>
+					{{/if}}
+				</div>
+			</div>
+		{{/unless}}
 	</div>
 
 </template>

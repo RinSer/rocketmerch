@@ -48,6 +48,7 @@
 		<h2>{{product.title}}</h2>
 		<img src="{{product.img}}" width="80%" alt="{{product.title}}">
 		<p>{{product.description}}</p>
+		<p>Price: {{product.price}}</p>
 		<p>Quantity: {{product.quantity}}</p>
 	</div>
 
@@ -66,10 +67,17 @@
 		<br>
 		<p>Image:</p>
 		<input type="text" class="js-admin-product-img" name="product_image" value="{{product.img}}" >
-		<input type="file" name="product_image_file" class="js-admin-product-image" >
+		<label class="css-admin-product-img-upload">
+			<input type="file" name="product_image_file" class="js-admin-product-image" >
+			<br>
+			<span>Choose your image</span>
+		</label>
 		<br>
 		<p>Description:</p>
 		<textarea class="css-admin-form-description" name="product_description" form="admin-product-update-{{product._id}}">{{product.description}}</textarea>
+		<br>
+		<p>Price:</p>
+		<input type="number" name="product_price" value="{{product.price}}">
 		<br>
 		<p>Quantity:</p>
 		<input type="number" name="product_quantity" value="{{product.quantity}}">

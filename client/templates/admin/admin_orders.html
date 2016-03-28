@@ -2,19 +2,53 @@
 
 	<div class="css-admin-main-content">
 		<h1>Orders</h1>
+		<ul class="css-admin-orders-status">
+			<li class="css-admin-orders-current-status js-admin-orders-all">All</li>
+			<li class="js-admin-orders-new">New</li>
+			<li class="js-admin-orders-pending">Pending</li>
+			<li class="js-admin-orders-delivered">Delivered</li>
+		</ul>
 		<div class="css-admin-orders">
 			{{#each order in orders}}
-				<div class="css-admin-order">
-					<h2>Client: {{order.client}}</h2>
-					<h3>Status: {{order.status}}</h3>
-					<ul>
-						{{#each product in order.products}}
-							<li>Title: {{product.title}}, Quantity: {{product.quantity}}</li>
-						{{/each}}
-					</ul>
-				</div>
+				{{> admin_order order=order}}
 			{{/each}}
 		</div>
+	</div>
+
+</template>
+
+<template name="admin_order">
+
+	<div class="css-admin-order">
+		<button class="css-admin-order-change-status js-admin-order-change-status">{{button_status}}</button>
+		<h3>Status: {{order.status}}</h3>
+		<h2>Client: {{client.name}}</h2>
+		<p>Email: {{client.emails.[0].address}}</p>
+		<p>Delivery address: {{order.address}}</p>
+		<h3>Products:</h3>
+		<table class="css-admin-order-products">
+			<tr class="css-admin-order-products-head">
+				<th>Image</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
+			</tr>
+			{{#each product in products}}
+				<tr>
+					<td><img src="{{product.img}}" height="25px"></td>
+					<td>{{product.title}}</td>
+					<td>{{product.price}}</td>
+					<td>x {{product.quantity}}</td>
+					<td>{{product.total}}</td>
+				</tr>
+			{{/each}}
+			<tr>
+				<td></td><td></td><td></td>
+				<td><p>Order total:</p></td>
+				<td><p>{{total}}</p></td>
+			</tr>
+		</table>
 	</div>
 
 </template>

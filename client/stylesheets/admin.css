@@ -165,6 +165,111 @@ h1 {
 
 }
 
+/*** admin_orders template ***/
+.css-admin-order-change-status {
+
+	border: 1px solid #aaa;
+	background-color: #fff;
+	color: #aaa;
+	font-size: 2em;
+	cursor: pointer;
+	float: right;
+
+}
+
+.css-admin-order-change-status:hover {
+
+	border: 1px solid #fff;
+	background-color: red;
+	color: #fff;
+
+}
+
+ul.css-admin-orders-status {
+
+	padding: 0;
+
+}
+
+.css-admin-orders-status li {
+
+	display: inline;
+	list-style-type: none;
+	padding: 10px;
+	border: 1px solid #aaa;
+	color: #aaa;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+.css-admin-orders-status li:hover {
+
+	border: 1px solid red;
+	color: red;
+
+}
+
+li.css-admin-orders-current-status {
+
+	border: 1px solid #222;
+	color: #222;
+
+}
+
+.css-admin-orders {
+
+	margin-top: 50px;
+
+}
+
+.css-admin-order {
+
+	padding: 10px;
+	border: 1px solid #aaa;
+	cursor: pointer;
+
+}
+
+.css-admin-order:hover {
+
+	border: 1px solid #222;
+
+}
+
+.css-admin-order-products {
+
+	margin: 0 auto 50px auto;
+	width: 80%;
+	text-align: center;
+	border-collapse: collapse;
+
+}
+
+.css-admin-order-products tr {
+
+	border-bottom: 1px solid #222;
+	
+}
+
+.css-admin-order-products tr:last-child {
+
+	border-bottom: none;
+	
+}
+
+.css-admin-order-products tr:hover {
+
+	color: red;
+
+}
+
+tr.css-admin-order-products-head:hover {
+
+	color: black;
+
+}
+
 /*** admin_clients template ***/
 .css-admin-client {
 
@@ -177,6 +282,40 @@ h1 {
 .css-admin-client:hover {
 
 	border: 1px solid #222;
+
+}
+
+.css-admin-client-orders-button {
+
+	background-color: #fff;
+	color: #aaa;
+	font-size: 1.5em;
+	border: 1px solid #aaa;
+	cursor: pointer;
+	margin-bottom: 20px;
+
+}
+
+.css-admin-client-orders-button:hover {
+
+	color: #222;
+	border: 1px solid #222;
+
+}
+
+.css-admin-client-orders {
+
+	width: 90%;
+	margin: 0 auto;
+	border: 1px solid #222;
+	padding: 10px;
+
+}
+
+.css-admin-client-orders-all {
+
+	margin-top: 50px;
+	width: 100%;
 
 }
 
@@ -322,6 +461,35 @@ h1 {
 	color: rgba(2, 2, 2, 0.75);
 	border-color: rgba(2, 2, 2, 0.55);
 
+}
+
+label.css-admin-product-img-upload input[type="file"] {
+	display: none;
+}
+
+.css-admin-product-img-upload {
+
+	padding: 0 5px;
+	background: #222;
+	color: white;
+	cursor: pointer;
+
+}
+
+.css-admin-product-img-upload:hover {
+
+	border: 1px solid white;
+	background: #222;
+	color: red;
+	cursor: pointer;
+
+}
+
+.css-admin-product-img-upload :invalid + span {
+    color: white;
+}
+.css-admin-product-img-upload :valid + span {
+    color: #222;
 }
 
 /*** admin_info ***/

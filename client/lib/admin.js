@@ -30,15 +30,106 @@ Template.admin_settings.onRendered(function() {
 
 });
 
+// On created admin_orders
+Template.admin_orders.onCreated(function() {
+
+	Session.set('orders_status', 'all');
+
+});
+
 // Helpers for admin_orders
 Template.admin_orders.helpers({
 
 	// Show all orders
 	orders:function() {
 
-		return Orders.find({});
+		var status = Session.get('orders_status');
+
+		switch (status) {
+			case "all":
+				return Orders.find({});
+			case "new":
+				return Orders.find({status: "new"});
+			case "pending":
+				return Orders.find({status: "pending"});
+			case "delivered":
+				return Orders.find({status: "delivered"});
+			default:
+				console.log("Unknown status!");
+				break;
+		}
 
 	}
+
+});
+
+// Helpers for admin_order
+Template.admin_order.helpers({
+
+	client:function() {
+
+		const client_id = Template.instance().data.order.client;
+
+		const client = Meteor.users.findOne({_id: client_id});
+
+		return client;
+
+	},
+
+	products:function() {
+
+		const product_ids = Template.instance().data.order.products;
+
+		const products = [];
+
+		_.each(product_ids, function(product_id) {
+
+			var product = Products.findOne({_id: product_id.title});
+			product.quantity = product_id.quantity;
+			product.total = product.price*product_id.quantity;
+			products.push(product);
+
+		});
+
+		return products;
+
+	},
+
+	total:function() {
+
+		const product_ids = Template.instance().data.order.products;
+
+		var total = 0;
+
+		_.each(product_ids, function(product_id) {
+
+			var product = Products.findOne({_id: product_id.title});
+			var product_total = product.price*product_id.quantity;
+			total += product_total;
+
+		});
+
+		return total;
+
+	},
+
+	button_status:function() {
+
+		const status = Template.instance().data.order.status;
+
+		switch (status) {
+			case "new":
+				return "Send";
+			case "pending":
+				return "Delivered";
+			case "delivered":
+				return "Delete";
+			default:
+				console.log("Unknown status!");
+				break;
+		}
+
+	},
 
 });
 
@@ -79,6 +170,29 @@ Template.admin_clients.helpers({
 	clients:function() {
 
 		return Meteor.users.find({client: true});
+
+	},
+
+});
+
+// Helpers for admin_client
+Template.admin_client.helpers({
+
+	see_orders:function() {
+
+		const client_id = Template.instance().data.client._id;
+		return Session.get(client_id+'_orders_visible');
+
+	},
+
+	orders:function() {
+
+		const client_id = Template.instance().data.client._id;
+		if (Orders.find({client: client_id}).count() > 0) {
+			return Orders.find({client: client_id});
+		} else {
+			return false;
+		}
 
 	},
 
@@ -128,6 +242,80 @@ Template.admin_info.helpers({
 
 });
 
+// Events for admin_orders
+Template.admin_orders.events({
+
+	'click .js-admin-orders-all': function(event) {
+
+		event.preventDefault();
+
+		Session.set('orders_status', 'all');
+		$('.css-admin-orders-current-status').removeClass('css-admin-orders-current-status');
+		$('.js-admin-orders-all').addClass('css-admin-orders-current-status');
+
+	},
+
+	'click .js-admin-orders-new': function(event) {
+
+		event.preventDefault();
+
+		Session.set('orders_status', 'new');
+		$('.css-admin-orders-current-status').removeClass('css-admin-orders-current-status');
+		$('.js-admin-orders-new').addClass('css-admin-orders-current-status');
+
+	},
+
+	'click .js-admin-orders-pending': function(event) {
+
+		event.preventDefault();
+
+		Session.set('orders_status', 'pending');
+		$('.css-admin-orders-current-status').removeClass('css-admin-orders-current-status');
+		$('.js-admin-orders-pending').addClass('css-admin-orders-current-status');
+
+	},
+
+	'click .js-admin-orders-delivered': function(event) {
+
+		event.preventDefault();
+
+		Session.set('orders_status', 'delivered');
+		$('.css-admin-orders-current-status').removeClass('css-admin-orders-current-status');
+		$('.js-admin-orders-delivered').addClass('css-admin-orders-current-status');
+
+	},
+
+});
+
+// Events for admin_order
+Template.admin_order.events({
+
+	'click .js-admin-order-change-status': function(event, template) {
+
+		event.preventDefault();
+
+		const order_id = template.data.order._id;
+		var order_status = template.data.order.status;
+
+		switch (order_status) {
+			case "new":
+				Meteor.call('updateStatus', order_id, "pending");
+				break;
+			case "pending":
+				Meteor.call('updateStatus', order_id, "delivered");
+				break;
+			case "delivered":
+				Meteor.call('deleteOrder', order_id);
+				break;
+			default:
+				console.log("Unknown status!");
+				break;
+		}
+
+	},
+
+});
+
 // Events for admin_product
 Template.admin_product.events({
 
@@ -173,6 +361,7 @@ Template.admin_product_form.events({
 		var title = event.target.product_title.value;
 		var img = event.target.product_image.value;
 		var description = event.target.product_description.value;
+		var price = event.target.product_price.value;
 		var quantity = event.target.product_quantity.value;
 		var date = new Date();
 
@@ -181,6 +370,7 @@ Template.admin_product_form.events({
 			title: title,
 			img: img,
 			description: description,
+			price: price,
 			quantity: quantity,
 			updatedAt: date
 		};
@@ -219,6 +409,29 @@ Template.admin_product_form.events({
 		});
 
 	}
+
+});
+
+// Events for admin_client
+Template.admin_client.events({
+
+	'click .js-admin-client-show-orders':function(event, template) {
+
+		event.preventDefault();
+
+		const client_id = template.data.client._id;
+		Session.set(client_id+'_orders_visible', true);
+
+	},
+
+	'click .js-admin-client-close-orders':function(event, template) {
+
+		event.preventDefault();
+
+		const client_id = template.data.client._id;
+		Session.set(client_id+'_orders_visible', false);
+
+	},
 
 });
 
