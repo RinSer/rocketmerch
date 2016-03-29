@@ -15,6 +15,16 @@ Template.admin_products.onRendered(function() {
 
 });
 
+// On rendered admin_language
+Template.admin_language.onRendered(function() {
+
+	if (TAPi18n.getLanguage() === 'ru') {
+		$('.js-switch-to-russian').removeClass('css-admin-language-button').addClass('css-admin-language-button-active');
+		$('.js-switch-to-english').removeClass('css-admin-language-button-active').addClass('css-admin-language-button');
+	}
+
+});
+
 // On rendered admin_users
 Template.admin_users.onRendered(function() {
 

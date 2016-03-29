@@ -467,7 +467,7 @@ label.css-admin-product-img-upload input[type="file"] {
 	display: none;
 }
 
-.css-admin-product-img-upload {
+.css-admin-product-img-upload > span {
 
 	padding: 0 5px;
 	background: #222;
@@ -476,7 +476,7 @@ label.css-admin-product-img-upload input[type="file"] {
 
 }
 
-.css-admin-product-img-upload:hover {
+.css-admin-product-img-upload > span:hover {
 
 	border: 1px solid white;
 	background: #222;
