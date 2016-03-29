@@ -21,3 +21,4 @@ natestrauser:font-awesome
 cfs:standard-packages
 cfs:gridfs
 accounts-password
+tap:i18n

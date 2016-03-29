@@ -1,0 +1,17 @@
+{
+	"orders_all": "Все",
+	"orders_new": "Новые",
+	"orders_pending": "В процессе",
+	"orders_delivered": "Доставлены",
+	"order_status": "Статус",
+	"order_client": "Заказчик",
+	"order_email": "Email",
+	"order_address": "Адрес доставки",
+	"order_products": "Товары",
+	"order_product_img": "Изображение",
+	"order_product_title": "Название",
+	"order_product_price": "Цена",
+	"order_product_quantity": "Количество",
+	"order_product_total": "Итого",
+	"order_total": "Общая стоимость"
+}

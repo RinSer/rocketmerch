@@ -1,0 +1,7 @@
+{
+	"client_name": "Имя",
+	"client_email": "Email",
+	"client_address": "Адрес",
+	"client_orders": "Заказы",
+	"client_no_orders": "Заказов не найдено"
+}

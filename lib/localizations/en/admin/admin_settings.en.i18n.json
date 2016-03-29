@@ -1,0 +1,20 @@
+{
+	"admin_language": "Language",
+	"admin_english": "English",
+	"admin_russian": "Russian",
+	"admin_users": "Users",
+	"add_user": "Add user",
+	"user_name": "Name",
+	"user_emails": "Emails",
+	"update_user": "Update user",
+	"save_user": "Save",
+	"delete_user": "Delete",
+	"user_email": "Email",
+	"user_password": "Password",
+	"user_password_confirmation": "Password confirmation",
+	"user_mistake": "Mistake",
+	"user_group": "Group",
+	"user_admin": "Admin",
+	"user_seller": "Seller",
+	"user_client": "Client"
+}

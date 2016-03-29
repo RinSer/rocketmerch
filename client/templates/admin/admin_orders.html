@@ -1,12 +1,12 @@
 <template name="admin_orders">
 
 	<div class="css-admin-main-content">
-		<h1>Orders</h1>
+		<h1>{{_ "admin_orders"}}</h1>
 		<ul class="css-admin-orders-status">
-			<li class="css-admin-orders-current-status js-admin-orders-all">All</li>
-			<li class="js-admin-orders-new">New</li>
-			<li class="js-admin-orders-pending">Pending</li>
-			<li class="js-admin-orders-delivered">Delivered</li>
+			<li class="css-admin-orders-current-status js-admin-orders-all">{{_ "orders_all"}}</li>
+			<li class="js-admin-orders-new">{{_ "orders_new"}}</li>
+			<li class="js-admin-orders-pending">{{_ "orders_pending"}}</li>
+			<li class="js-admin-orders-delivered">{{_ "orders_delivered"}}</li>
 		</ul>
 		<div class="css-admin-orders">
 			{{#each order in orders}}
@@ -17,22 +17,23 @@
 
 </template>
 
+
 <template name="admin_order">
 
 	<div class="css-admin-order">
 		<button class="css-admin-order-change-status js-admin-order-change-status">{{button_status}}</button>
-		<h3>Status: {{order.status}}</h3>
-		<h2>Client: {{client.name}}</h2>
-		<p>Email: {{client.emails.[0].address}}</p>
-		<p>Delivery address: {{order.address}}</p>
-		<h3>Products:</h3>
+		<h3>{{_ "order_status"}}: {{status}}</h3>
+		<h2>{{_ "order_client"}}: {{client.name}}</h2>
+		<p>{{_ "order_email"}}: {{client.emails.[0].address}}</p>
+		<p>{{_ "order_address"}}: {{order.address}}</p>
+		<h3>{{_ "order_products"}}:</h3>
 		<table class="css-admin-order-products">
 			<tr class="css-admin-order-products-head">
-				<th>Image</th>
-				<th>Title</th>
-				<th>Price</th>
-				<th>Quantity</th>
-				<th>Total</th>
+				<th>{{_ "order_product_img"}}</th>
+				<th>{{_ "order_product_title"}}</th>
+				<th>{{_ "order_product_price"}}</th>
+				<th>{{_ "order_product_quantity"}}</th>
+				<th>{{_ "order_product_total"}}</th>
 			</tr>
 			{{#each product in products}}
 				<tr>
@@ -45,7 +46,7 @@
 			{{/each}}
 			<tr>
 				<td></td><td></td><td></td>
-				<td><p>Order total:</p></td>
+				<td><p>{{_ "order_total"}}:</p></td>
 				<td><p>{{total}}</p></td>
 			</tr>
 		</table>

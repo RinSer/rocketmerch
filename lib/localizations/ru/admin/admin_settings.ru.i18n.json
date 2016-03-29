@@ -1,0 +1,20 @@
+{
+	"admin_language": "Язык",
+	"admin_english": "Английский",
+	"admin_russian": "Русский",
+	"admin_users": "Пользователи",
+	"add_user": "Добавить пользователя",
+	"user_name": "Имя пользователя",
+	"user_emails": "Emails",
+	"update_user": "Обновить пользователя",
+	"save_user": "Сохранить",
+	"delete_user": "Удалить",
+	"user_email": "Email",
+	"user_password": "Пароль",
+	"user_password_confirmation": "Подтверждение пароля",
+	"user_mistake": "Ошибка",
+	"user_group": "Группа",
+	"user_admin": "Администратор",
+	"user_seller": "Продавец",
+	"user_client": "Клиент"
+}

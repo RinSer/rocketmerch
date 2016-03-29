@@ -15,8 +15,8 @@ Template.admin_products.onRendered(function() {
 
 });
 
-// On rendered admin_settings
-Template.admin_settings.onRendered(function() {
+// On rendered admin_users
+Template.admin_users.onRendered(function() {
 
 	this.$('.jq-admin-add-user-button').click(function() {
 		$('.css-admin-new-user-form').animate({width:'toggle'}, 'slow');
@@ -66,6 +66,18 @@ Template.admin_orders.helpers({
 // Helpers for admin_order
 Template.admin_order.helpers({
 
+	status:function() {
+
+		const status = Template.instance().data.order.status;
+
+		if (TAPi18n.getLanguage() === 'ru') {
+			return admin_order_status_ru.statuses[status];
+		} else {
+			return status;
+		}
+
+	},
+
 	client:function() {
 
 		const client_id = Template.instance().data.order.client;
@@ -86,7 +98,7 @@ Template.admin_order.helpers({
 
 			var product = Products.findOne({_id: product_id.title});
 			product.quantity = product_id.quantity;
-			product.total = product.price*product_id.quantity;
+			product.total = ((product.price*100)*product_id.quantity)/100;
 			products.push(product);
 
 		});
@@ -104,7 +116,7 @@ Template.admin_order.helpers({
 		_.each(product_ids, function(product_id) {
 
 			var product = Products.findOne({_id: product_id.title});
-			var product_total = product.price*product_id.quantity;
+			var product_total = ((product.price*100)*product_id.quantity)/100;
 			total += product_total;
 
 		});
@@ -116,16 +128,23 @@ Template.admin_order.helpers({
 	button_status:function() {
 
 		const status = Template.instance().data.order.status;
+		var statuses;
+
+		if (TAPi18n.getLanguage() === 'ru') {
+			statuses = admin_order_status_ru.buttons;
+		} else {
+			statuses = admin_order_status_en.buttons;
+		}
 
 		switch (status) {
 			case "new":
-				return "Send";
+				return statuses.send;
 			case "pending":
-				return "Delivered";
+				return statuses.pending;
 			case "delivered":
-				return "Delete";
+				return statuses.delivered;
 			default:
-				console.log("Unknown status!");
+				console.log(statuses.mistake+"!");
 				break;
 		}
 
@@ -198,8 +217,8 @@ Template.admin_client.helpers({
 
 });
 
-// Helpers for admin_settings
-Template.admin_settings.helpers({
+// Helpers for admin_users
+Template.admin_users.helpers({
 
 	users:function() {
 
@@ -482,6 +501,31 @@ Template.admin_info_form.events({
 
 });
 
+// Events for admin_language
+Template.admin_language.events({
+
+	'click .js-switch-to-english':function(event) {
+
+		event.preventDefault();
+
+		TAPi18n.setLanguage('en');
+		$('.js-switch-to-english').removeClass('css-admin-language-button').addClass('css-admin-language-button-active');
+		$('.js-switch-to-russian').removeClass('css-admin-language-button-active').addClass('css-admin-language-button');
+
+	},
+
+	'click .js-switch-to-russian':function(event) {
+
+		event.preventDefault();
+
+		TAPi18n.setLanguage('ru');
+		$('.js-switch-to-russian').removeClass('css-admin-language-button').addClass('css-admin-language-button-active');
+		$('.js-switch-to-english').removeClass('css-admin-language-button-active').addClass('css-admin-language-button');
+
+	},
+
+});
+
 // Events for admin_user
 Template.admin_user.events({
 
@@ -510,7 +554,7 @@ Template.admin_user.events({
 		const id = this.user._id;
 		Meteor.call('deleteUser', id);
 
-	}
+	},
 
 });
 

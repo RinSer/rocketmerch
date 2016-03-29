@@ -1,0 +1,13 @@
+{
+	"add_product": "Добавить товар",
+	"delete_product": "Удалить",
+	"update_product": "Обновить товар",
+	"product_category": "Категория",
+	"product_title": "Название",
+	"product_img": "Изображение",
+	"product_img_choose": "Выберите Ваше изображение",
+	"product_description": "Описание",
+	"product_price": "Цена",
+	"product_quantity": "Количество",
+	"save_product": "Сохранить"
+}

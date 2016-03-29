@@ -1,27 +1,49 @@
 <template name="admin_settings">
 
 	<div class="css-admin-main-content">
-		<h1>Settings</h1>
-		<div class="css-admin-set-users">
-			<h2>Users</h2>
-			<div class="css-admin-new-user-form">
-				<i class="fa fa-times css-admin-form-close jq-admin-new-user-close"></i>
-				<h1>Add user</h1>
-				{{> admin_user_form}}
-			</div>
-			<div class="css-admin-users-all">
-				{{#each user in users}}
-					{{> admin_user user=user}}
-				{{/each}}
-			</div>
-			<div class="css-admin-users-add">
-				{{#if currentUser.admin}}
-					<button class="css-admin-add-user-button jq-admin-add-user-button">
-						<span>Add user</span>
-						<i class="fa fa-plus css-admin-plus"></i>
-					</button>
-				{{/if}}
-			</div>
+		<h1>{{_ "admin_settings"}}</h1>
+
+		{{> admin_language}}
+
+		{{> admin_users}}
+		
+	</div>
+
+</template>
+
+
+<template name="admin_language">
+
+	<div class="css-admin-language">
+		<h2>{{_ "admin_language"}}</h2>
+		<div class="css-admin-language-button-active js-switch-to-english">{{_ "admin_english"}}</div>
+		<div class="css-admin-language-button js-switch-to-russian">{{_ "admin_russian"}}</div>
+	</div>
+
+</template>
+
+
+<template name="admin_users">
+
+	<div class="css-admin-set-users">
+		<h2>{{_ "admin_users"}}</h2>
+		<div class="css-admin-new-user-form">
+			<i class="fa fa-times css-admin-form-close jq-admin-new-user-close"></i>
+			<h1>{{_ "add_user"}}</h1>
+			{{> admin_user_form}}
+		</div>
+		<div class="css-admin-users-all">
+			{{#each user in users}}
+				{{> admin_user user=user}}
+			{{/each}}
+		</div>
+		<div class="css-admin-users-add">
+			{{#if currentUser.admin}}
+				<button class="css-admin-add-user-button jq-admin-add-user-button">
+					<span>{{_ "add_user"}}</span>
+					<i class="fa fa-plus css-admin-plus"></i>
+				</button>
+			{{/if}}
 		</div>
 	</div>
 
@@ -33,16 +55,16 @@
 	<div class="css-admin-user">
 		{{#unless update}}
 			<div class="js-admin-user">
-				<h3>Name: {{user.name}}</h3>
-				<p>Emails: {{#each email in user.emails}}{{email.address}} {{/each}}</p>
+				<h3>{{_ "user_name"}}: {{user.name}}</h3>
+				<p>{{_ "user_emails"}}: {{#each email in user.emails}}{{email.address}} {{/each}}</p>
 			</div>
 		{{else}}
 			<i class="fa fa-times css-admin-form-close js-admin-user-form-close"></i>
 			<div class="css-admin-user-form-wrap">
-				<h3>Update user</h3>
+				<h3>{{_ "update_user"}}</h3>
 				{{> admin_user_form user=user}}
 				{{#if currentUser.admin}}
-					<button class="css-admin-delete-button js-admin-delete-user-button">Delete</button>
+					<button class="css-admin-delete-button js-admin-delete-user-button">{{_ "delete_user"}}</button>
 				{{/if}}
 			</div>
 		{{/unless}}
@@ -55,26 +77,26 @@
 
 	<form class="css-admin-user-form js-admin-user-form" id="admin-user-update-{{user._id}}">
 
-		<p>Name:</p>
+		<p>{{_ "user_name"}}:</p>
 		<input type="text" name="user_name" value="{{user.name}}">
 		<br>
-		<p>Email:</p>
+		<p>{{_ "user_email"}}:</p>
 		<input type="text" name="user_email" value="{{user.email}}">
 		<br>
-		<p>Password:</p>
+		<p>{{_ "user_password"}}:</p>
 		<input type="password" name="user_password">
 		<br>
-		<p>Password Confirmation:</p>
+		<p>{{_ "user_password_confirmation"}}:</p>
 		<input type="password" name="user_password_confirmation">
 		<br>
-		<div class="css-admin-user-form-notification">Mistake!</div>
+		<div class="css-admin-user-form-notification">{{_ "user_mistake"}}!</div>
 		{{#if currentUser.admin}}
-			<p>Group:</p>
-			<p>Admin<input type="radio" name="user_group" value="admin"></p>
-			<p>Seller<input type="radio" name="user_group" value="seller"></p>
-			<p>Client<input type="radio" name="user_group" value="client"></p>
+			<p>{{_ "user_group"}}:</p>
+			<p>{{_ "user_admin"}}<input type="radio" name="user_group" value="admin"></p>
+			<p>{{_ "user_seller"}}<input type="radio" name="user_group" value="seller"></p>
+			<p>{{_ "user_client"}}<input type="radio" name="user_group" value="client"></p>
 		{{/if}}
-		<input class="css-admin-form-submit" type="submit" name="submit" value="Save">
+		<input class="css-admin-form-submit" type="submit" name="submit" value="{{_ "save_user"}}">
 		<br>
 
 	</form>

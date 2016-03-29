@@ -1,10 +1,10 @@
 <template name="admin_products">
 
 	<div class="css-admin-main-content">
-		<h1>Products</h1>
+		<h1>{{_ "admin_products"}}</h1>
 		<div class="css-admin-products-add-new-form">
 			<i class="fa fa-times css-admin-form-close jq-admin-new-form-close"></i>
-			<h1>Add product</h1>
+			<h1>{{_ "add_product"}}</h1>
 			{{> admin_product_form}}
 		</div>
 		<div class="css-admin-products-all">
@@ -14,7 +14,7 @@
 		</div>
 		<div class="css-admin-products-add">
 			<button class="css-admin-add-button jq-admin-add-button">
-				<span>Add product</span>
+				<span>{{_ "add_product"}}</span>
 				<i class="fa fa-plus css-admin-plus"></i>
 			</button>
 		</div>
@@ -31,8 +31,8 @@
 				{{> admin_product_description product=product}}
 			{{else}}
 				<i class="fa fa-times css-admin-form-close js-admin-form-close"></i>
-				<button class="css-admin-delete-button js-admin-delete-button">Delete</button>
-				<h1>Update product</h1>
+				<button class="css-admin-delete-button js-admin-delete-button">{{_ "delete_product"}}</button>
+				<h1>{{_ "update_product"}}</h1>
 				{{> admin_product_form product=product}}
 			{{/unless}}
 
@@ -44,12 +44,12 @@
 <template name="admin_product_description">
 
 	<div class="js-admin-product">
-		<h3>Category: {{product.category}}</h3>
+		<h3>{{_ "product_category"}}: {{product.category}}</h3>
 		<h2>{{product.title}}</h2>
 		<img src="{{product.img}}" width="80%" alt="{{product.title}}">
 		<p>{{product.description}}</p>
-		<p>Price: {{product.price}}</p>
-		<p>Quantity: {{product.quantity}}</p>
+		<p>{{_ "product_price"}}: {{product.price}}</p>
+		<p>{{_ "product_quantity"}}: {{product.quantity}}</p>
 	</div>
 
 </template>
@@ -59,30 +59,30 @@
 
 	<form class="css-admin-product-form js-admin-product-form" id="admin-product-update-{{product._id}}">
 
-		<p>Category:</p>
+		<p>{{_ "product_category"}}:</p>
 		<input type="text" name="product_category" value="{{product.category}}">
 		<br>
-		<p>Title:</p>
+		<p>{{_ "product_title"}}:</p>
 		<input type="text" name="product_title" value="{{product.title}}">
 		<br>
-		<p>Image:</p>
+		<p>{{_ "product_img"}}:</p>
 		<input type="text" class="js-admin-product-img" name="product_image" value="{{product.img}}" >
 		<label class="css-admin-product-img-upload">
 			<input type="file" name="product_image_file" class="js-admin-product-image" >
 			<br>
-			<span>Choose your image</span>
+			<span>{{_ "product_img_choose"}}</span>
 		</label>
 		<br>
-		<p>Description:</p>
+		<p>{{_ "product_description"}}:</p>
 		<textarea class="css-admin-form-description" name="product_description" form="admin-product-update-{{product._id}}">{{product.description}}</textarea>
 		<br>
-		<p>Price:</p>
+		<p>{{_ "product_price"}}:</p>
 		<input type="number" name="product_price" value="{{product.price}}">
 		<br>
-		<p>Quantity:</p>
+		<p>{{_ "product_quantity"}}:</p>
 		<input type="number" name="product_quantity" value="{{product.quantity}}">
 		<br>
-		<input class="css-admin-form-submit" type="submit" name="submit" value="Save">
+		<input class="css-admin-form-submit" type="submit" name="submit" value="{{_ "save_product"}}">
 
 	</form>
 

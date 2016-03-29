@@ -1,0 +1,13 @@
+{
+	"add_product": "Add product",
+	"delete_product": "Delete",
+	"update_product": "Update product",
+	"product_category": "Category",
+	"product_title": "Title",
+	"product_img": "Image",
+	"product_img_choose": "Choose your image",
+	"product_description": "Description",
+	"product_price": "Price",
+	"product_quantity": "Quantity",
+	"save_product": "Save"
+}

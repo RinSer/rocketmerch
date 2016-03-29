@@ -1,0 +1,17 @@
+{
+	"orders_all": "All",
+	"orders_new": "New",
+	"orders_pending": "Pending",
+	"orders_delivered": "Delivered",
+	"order_status": "Status",
+	"order_client": "Client",
+	"order_email": "Email",
+	"order_address": "Delivery address",
+	"order_products": "Products",
+	"order_product_img": "Image",
+	"order_product_title": "Title",
+	"order_product_price": "Price",
+	"order_product_quantity": "Quantity",
+	"order_product_total": "Total",
+	"order_total": "Order total"
+}

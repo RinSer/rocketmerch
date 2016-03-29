@@ -1,0 +1,10 @@
+{
+	"login_sign_in": "Войти",
+	"login_sign_out": "Выйти",
+	"login_register": "Зарегистрироваться",
+	"login_registration_form": "Регистрация",
+	"login_login": "Войти",
+	"login_email": "Email",
+	"login_password": "Пароль",
+	"login_error": "Ошибка"
+}

@@ -1,17 +1,17 @@
 <template name="admin_info">
 
 	<div class="css-admin-main-content">
-		<h1>Info</h1>
+		<h1>{{_ "admin_info"}}</h1>
 		<div class="css-admin-info">
 			{{#if update}}
 				<i class="fa fa-times css-admin-form-close js-admin-info-form-close"></i>
-				<h3>Update shop information.</h3>
+				<h3>{{_ "update_info"}}.</h3>
 				{{> admin_info_form info=info}}
 			{{else}}
 				<div class="js-admin-info-update">
-					<h2>Title: {{info.title}}</h2>
-					<p>Address: {{info.address}}</p>
-					<p>Description: {{info.description}}</p>
+					<h2>{{_ "info_title"}}: {{info.title}}</h2>
+					<p>{{_ "info_address"}}: {{info.address}}</p>
+					<p>{{_ "info_description"}}: {{info.description}}</p>
 				</div>
 			{{/if}}
 		</div>
@@ -19,20 +19,21 @@
 	
 </template>
 
+
 <template name="admin_info_form">
 
 	<form class="css-admin-info-form js-admin-info-form" id="admin-info-update">
 
-		<p>Title:</p>
+		<p>{{_ "info_title"}}:</p>
 		<input type="text" name="info_title" value="{{info.title}}">
 		<br>
-		<p>Address:</p>
+		<p>{{_ "info_address"}}:</p>
 		<textarea class="css-admin-info-address" name="info_address" form="admin-info-update">{{info.address}}</textarea>
 		<br>
-		<p>Description:</p>
+		<p>{{_ "info_description"}}:</p>
 		<textarea class="css-admin-info-description" name="info_description" form="admin-info-update">{{info.description}}</textarea>
 		<br>
-		<input class="css-admin-form-submit" type="submit" name="submit" value="Save">
+		<input class="css-admin-form-submit" type="submit" name="submit" value="{{_ "info_save"}}">
 		<br>
 
 	</form>

@@ -1,0 +1,10 @@
+{
+	"login_sign_in": "Sign in",
+	"login_sign_out": "Sign out",
+	"login_register": "Register",
+	"login_registration_form": "Registration form",
+	"login_login": "Login",
+	"login_email": "Email",
+	"login_password": "Password",
+	"login_error": "Error"
+}

@@ -1,0 +1,7 @@
+{
+	"client_name": "Name",
+	"client_email": "Email",
+	"client_address": "Address",
+	"client_orders": "Orders",
+	"client_no_orders": "No orders found"
+}

@@ -528,6 +528,45 @@ label.css-admin-product-img-upload input[type="file"] {
 }
 
 /*** admin_settings ***/
+.css-admin-language-button {
+
+	margin: 0 0 25px 0;
+	padding: 5px;
+	border: 1px solid #aaa;
+	float: left;
+	color: #aaa;
+	font-size: 1.5em;
+	font-weight: bold;
+	cursor: pointer;
+
+}
+
+.css-admin-language-button:hover {
+
+	border-color: #222;
+	color: #222;
+
+}
+
+.css-admin-language-button-active {
+
+	margin: 0 0 25px 0;
+	padding: 5px;
+	border: 1px solid #aaa;
+	float: left;
+	background-color: #222;
+	color: white;
+	font-size: 1.5em;
+	font-weight: bold;
+
+}
+
+.css-admin-set-users {
+
+	clear: left;
+
+}
+
 .css-admin-set-users > h2 {
 
 	text-align: center;
