@@ -175,7 +175,8 @@ Meteor.startup(function () {
                     quantity: 2
                 }
             ],
-            status: "new"
+            status: "new",
+            createdAt: new Date(),
         },
         {
             client: customer2_id,
@@ -190,7 +191,8 @@ Meteor.startup(function () {
                     quantity: 1
                 }
             ],
-            status: "new"
+            status: "new",
+            createdAt: new Date(),
         },
         {
             client: customer3_id,
@@ -209,7 +211,8 @@ Meteor.startup(function () {
                     quantity: 5
                 }
             ],
-            status: "new"
+            status: "new",
+            createdAt: new Date(),
         },
         {
             client: customer1_id,
@@ -224,7 +227,8 @@ Meteor.startup(function () {
                     quantity: 1
                 }
             ],
-            status: "pending"
+            status: "pending",
+            createdAt: new Date(),
         },
         {
             client: customer2_id,
@@ -239,7 +243,8 @@ Meteor.startup(function () {
                     quantity: 1
                 }
             ],
-            status: "pending"
+            status: "pending",
+            createdAt: new Date(),
         },
         {
             client: customer3_id,
@@ -254,7 +259,8 @@ Meteor.startup(function () {
                     quantity: 1
                 }
             ],
-            status: "delivered"
+            status: "delivered",
+            createdAt: new Date(),
         },
         {
             client: customer1_id,
@@ -269,7 +275,8 @@ Meteor.startup(function () {
                     quantity: 1
                 }
             ],
-            status: "delivered"
+            status: "delivered",
+            createdAt: new Date(),
         }
     ];
     if (Orders.find().count() === 0) {

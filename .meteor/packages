@@ -22,3 +22,5 @@ cfs:standard-packages
 cfs:gridfs
 accounts-password
 tap:i18n
+aldeed:simple-schema
+aldeed:collection2

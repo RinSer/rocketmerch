@@ -401,16 +401,19 @@ Template.admin_product_form.events({
 			description: description,
 			price: price,
 			quantity: quantity,
-			updatedAt: date
 		};
 
 		if (this.product) {
 			const id = this.product._id;
 
+			new_product.updatedAt = date;
+
 			Meteor.call('updateProduct', id, new_product);
 
 	        Session.set(id+"_update", false);
 		} else {
+			new_product.createdAt = date;
+
 			Meteor.call('addProduct', new_product);
 
 			$('.css-admin-products-add-new-form').animate({width:'toggle'});

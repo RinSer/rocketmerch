@@ -78,7 +78,7 @@
 		<textarea class="css-admin-form-description" name="product_description" form="admin-product-update-{{product._id}}">{{product.description}}</textarea>
 		<br>
 		<p>{{_ "product_price"}}:</p>
-		<input type="number" name="product_price" value="{{product.price}}">
+		<input type="number" step="0.01" name="product_price" value="{{product.price}}">
 		<br>
 		<p>{{_ "product_quantity"}}:</p>
 		<input type="number" name="product_quantity" value="{{product.quantity}}">
