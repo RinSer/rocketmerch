@@ -108,7 +108,7 @@ Template.admin_order.helpers({
 
 			var product = Products.findOne({_id: product_id.title});
 			product.quantity = product_id.quantity;
-			product.total = ((product.price*100)*product_id.quantity)/100;
+			product.total = Math.round(product.price*product_id.quantity*100)/100;
 			products.push(product);
 
 		});
@@ -126,12 +126,12 @@ Template.admin_order.helpers({
 		_.each(product_ids, function(product_id) {
 
 			var product = Products.findOne({_id: product_id.title});
-			var product_total = ((product.price*100)*product_id.quantity)/100;
+			var product_total = Math.round(product.price*product_id.quantity*100)/100;
 			total += product_total;
 
 		});
 
-		return total;
+		return Math.round(total*100)/100;
 
 	},
 
