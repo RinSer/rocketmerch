@@ -1,6 +1,11 @@
 <template name="admin_clients">
 
 	<div class="css-admin-main-content">
+		<form class="js-admin-clients-search">
+			<input class="css-admin-search" type="search" name="admin_clients_search">
+			<input class="js-admin-search-submit" type="submit" style="display: none;">
+			<i class="fa fa-search js-admin-clients-search-submit" style="cursor: pointer;"></i>
+		</form>
 		<h1>{{_ "admin_clients"}}</h1>
 		<div class="css-admin-clients-all">
 			{{#each client in clients}}

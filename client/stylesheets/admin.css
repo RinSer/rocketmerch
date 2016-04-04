@@ -47,26 +47,6 @@ h1 {
 	
 }
 
-.css-admin-nav-ul {
-
-	display: block;
-	margin: 0;
-	color: #fff;
-	text-align: center;
-	padding-top: 40px;
-	padding-left: 0;
-
-}
-
-
-.css-admin-nav-ul li {
-
-	display: inline;
-	text-align: center;
-	padding: 25px;
-
-}
-
 .css-admin-nav-ul li a {
 
 	font-size: 1.2em;
@@ -165,6 +145,13 @@ h1 {
 
 }
 
+input.css-admin-search {
+
+	border: 1px solid #aaa;
+	font-size: 1.2em;
+
+}
+
 /*** admin_orders template ***/
 .css-admin-order-change-status {
 
@@ -185,32 +172,26 @@ h1 {
 
 }
 
-ul.css-admin-orders-status {
+.css-admin-orders-status p {
 
-	padding: 0;
-
-}
-
-.css-admin-orders-status li {
-
-	display: inline;
-	list-style-type: none;
+	float: left;
 	padding: 10px;
 	border: 1px solid #aaa;
 	color: #aaa;
 	text-align: center;
 	cursor: pointer;
+	margin: 0 5px 5px 0;
 
 }
 
-.css-admin-orders-status li:hover {
+.css-admin-orders-status p:hover {
 
 	border: 1px solid red;
 	color: red;
 
 }
 
-li.css-admin-orders-current-status {
+p.css-admin-orders-current-status {
 
 	border: 1px solid #222;
 	color: #222;
@@ -219,7 +200,8 @@ li.css-admin-orders-current-status {
 
 .css-admin-orders {
 
-	margin-top: 50px;
+	margin-top: 100px;
+	clear: both;
 
 }
 
@@ -322,7 +304,7 @@ tr.css-admin-order-products-head:hover {
 /*** admin_products template ***/
 .css-admin-products-all {
 
-	width: 90%;
+	width: 100%;
 	float: left;
 
 }
@@ -335,15 +317,8 @@ tr.css-admin-order-products-head:hover {
 
 }
 
-.css-admin-products-add-new-form i {
-
-	font-size: 3em;
-
-}
-
 .css-admin-product {
 
-	width: 33.33%;
 	float: left;
 	border: 1px solid #aaa;
 	text-align: center;
@@ -358,19 +333,6 @@ tr.css-admin-order-products-head:hover {
 
 	border: 1px solid #222;
 	cursor: pointer;
-
-}
-
-.css-admin-products-add {
-
-	width: 10%;
-	float: left;
-
-}
-
-.css-admin-product-form {
-
-	margin-bottom: 50px;
 
 }
 
@@ -424,6 +386,7 @@ tr.css-admin-order-products-head:hover {
 	background-color: #fff;
 	color: rgba(2, 2, 2, 0.25);
 	border-color: rgba(2, 2, 2, 0.25);
+	float: right;
 
 }
 
@@ -447,19 +410,17 @@ tr.css-admin-order-products-head:hover {
 	color: white;
 	width: 50%;
 	height: 50px;
-	margin: 25px auto 0 auto;
+	margin: 25px auto 50px auto;
 	font-size: 1.5em;
 	border-color: rgba(255, 255, 255, 0.25);
 	text-align: center;
-	clear: both;
 
 }
 
 .css-admin-delete-button:hover {
 
 	cursor: pointer;
-	color: rgba(2, 2, 2, 0.75);
-	border-color: rgba(2, 2, 2, 0.55);
+	color: #aaa;
 
 }
 
@@ -528,9 +489,15 @@ label.css-admin-product-img-upload input[type="file"] {
 }
 
 /*** admin_settings ***/
-.css-admin-language-button {
+.css-admin-language-buttons {
 
 	margin: 0 0 25px 0;
+
+}
+
+.css-admin-language-button {
+
+	margin: 0;
 	padding: 5px;
 	border: 1px solid #aaa;
 	float: left;
@@ -575,7 +542,7 @@ label.css-admin-product-img-upload input[type="file"] {
 
 .css-admin-users-all {
 
-	width: 95%;
+	width: 100%;
 	float: left;
 
 }
@@ -594,18 +561,12 @@ label.css-admin-product-img-upload input[type="file"] {
 
 }
 
-.css-admin-users-add {
-
-	width: 5%;
-	float: left;
-
-}
-
 .css-admin-add-user-button {
 
 	background-color: #fff;
 	color: rgba(2, 2, 2, 0.25);
 	border-color: rgba(2, 2, 2, 0.25);
+	float: right;
 
 }
 
@@ -627,7 +588,6 @@ label.css-admin-product-img-upload input[type="file"] {
 .css-admin-user-form-wrap {
 
 	text-align: center;
-	padding-bottom: 50px;
 
 }
 
@@ -651,5 +611,96 @@ label.css-admin-product-img-upload input[type="file"] {
 	display: none;
 	color: red;
 	padding: 20px;
+
+}
+
+/*** Responsive decisions ***/
+
+@media (min-width: 769px) {
+
+	.css-admin-menu-rocket {
+
+		display: none;
+
+	}
+
+	.css-admin-nav-ul {
+
+		display: block;
+		margin: 0;
+		color: #fff;
+		text-align: center;
+		padding-top: 40px;
+		padding-left: 0;
+
+	}
+
+
+	.css-admin-nav-ul li {
+
+		display: inline;
+		text-align: center;
+		padding: 25px;
+
+	}
+
+
+	.css-admin-product {
+
+		width: 33.33%;
+
+	}
+
+}
+
+@media (max-width: 768px) {
+
+	.css-admin-menu-rocket {
+
+		color: #fff;
+		font-size: 3em;
+		margin-top: 25px;
+		margin-right: 25px;
+		float: right;
+		cursor: pointer;
+
+	}
+
+	.css-admin-nav-list {
+
+		margin-top: 100px;
+		background-color: #222;
+
+	}
+
+	.css-admin-nav-ul {
+
+		display: block;
+		margin: 0 auto;
+		color: #fff;
+		text-align: center;
+		padding: 25px 0;
+
+	}
+
+
+	.css-admin-nav-ul li {
+
+		text-align: center;
+		padding: 10px;
+
+	}
+
+	.css-admin-login {
+
+		display: none;
+
+	}
+
+	.css-admin-product {
+
+		width: 100%;
+
+	}
 
 }

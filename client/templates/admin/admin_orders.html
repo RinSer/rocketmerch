@@ -2,12 +2,12 @@
 
 	<div class="css-admin-main-content">
 		<h1>{{_ "admin_orders"}}</h1>
-		<ul class="css-admin-orders-status">
-			<li class="css-admin-orders-current-status js-admin-orders-all">{{_ "orders_all"}}</li>
-			<li class="js-admin-orders-new">{{_ "orders_new"}}</li>
-			<li class="js-admin-orders-pending">{{_ "orders_pending"}}</li>
-			<li class="js-admin-orders-delivered">{{_ "orders_delivered"}}</li>
-		</ul>
+		<div class="css-admin-orders-status">
+			<p class="css-admin-orders-current-status js-admin-orders-all">{{_ "orders_all"}}</p>
+			<p class="js-admin-orders-new">{{_ "orders_new"}}</p>
+			<p class="js-admin-orders-pending">{{_ "orders_pending"}}</p>
+			<p class="js-admin-orders-delivered">{{_ "orders_delivered"}}</p>
+		</div>
 		<div class="css-admin-orders">
 			{{#each order in orders}}
 				{{> admin_order order=order}}
@@ -27,29 +27,31 @@
 		<p>{{_ "order_email"}}: {{client.emails.[0].address}}</p>
 		<p>{{_ "order_address"}}: {{order.address}}</p>
 		<h3>{{_ "order_products"}}:</h3>
-		<table class="css-admin-order-products">
-			<tr class="css-admin-order-products-head">
-				<th>{{_ "order_product_img"}}</th>
-				<th>{{_ "order_product_title"}}</th>
-				<th>{{_ "order_product_price"}}</th>
-				<th>{{_ "order_product_quantity"}}</th>
-				<th>{{_ "order_product_total"}}</th>
-			</tr>
-			{{#each product in products}}
-				<tr>
-					<td><img src="{{product.img}}" height="25px"></td>
-					<td>{{product.title}}</td>
-					<td>{{product.price}}</td>
-					<td>x {{product.quantity}}</td>
-					<td>{{product.total}}</td>
+		<div style="overflow-x: auto;">
+			<table class="css-admin-order-products">
+				<tr class="css-admin-order-products-head">
+					<th>{{_ "order_product_img"}}</th>
+					<th>{{_ "order_product_title"}}</th>
+					<th>{{_ "order_product_price"}}</th>
+					<th>{{_ "order_product_quantity"}}</th>
+					<th>{{_ "order_product_total"}}</th>
 				</tr>
-			{{/each}}
-			<tr>
-				<td></td><td></td><td></td>
-				<td><p>{{_ "order_total"}}:</p></td>
-				<td><p>{{total}}</p></td>
-			</tr>
-		</table>
+				{{#each product in products}}
+					<tr>
+						<td><img src="{{product.img}}" height="25px"></td>
+						<td>{{product.title}}</td>
+						<td>{{product.price}}</td>
+						<td>x {{product.quantity}}</td>
+						<td>{{product.total}}</td>
+					</tr>
+				{{/each}}
+				<tr>
+					<td></td><td></td><td></td>
+					<td><p>{{_ "order_total"}}:</p></td>
+					<td><p>{{total}}</p></td>
+				</tr>
+			</table>
+		</div>
 	</div>
 
 </template>

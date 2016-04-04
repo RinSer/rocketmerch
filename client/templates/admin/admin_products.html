@@ -1,24 +1,28 @@
 <template name="admin_products">
 
 	<div class="css-admin-main-content">
-		<input type="search" name="admin_products_search" autocomplete="false">
-		<i class="fa fa-search"></i>
+		<form class="js-admin-products-search">
+			<input class="css-admin-search" type="search" name="admin_products_search">
+			<input class="js-admin-search-submit" type="submit" style="display: none;">
+			<i class="fa fa-search js-admin-products-search-submit" style="cursor: pointer;"></i>
+		</form>
 		<h1>{{_ "admin_products"}}</h1>
 		<div class="css-admin-products-add-new-form">
 			<i class="fa fa-times css-admin-form-close jq-admin-new-form-close"></i>
 			<h1>{{_ "add_product"}}</h1>
 			{{> admin_product_form}}
 		</div>
+		<div class="css-admin-products-add">
+			<button class="css-admin-add-button jq-admin-add-button">
+				<span>{{_ "add_product"}}</span>
+				<br>
+				<i class="fa fa-plus css-admin-plus"></i>
+			</button>
+		</div>
 		<div class="css-admin-products-all">
 			{{#each product in products}}
 				{{> admin_product product=product}}
 			{{/each}}
-		</div>
-		<div class="css-admin-products-add">
-			<button class="css-admin-add-button jq-admin-add-button">
-				<span>{{_ "add_product"}}</span>
-				<i class="fa fa-plus css-admin-plus"></i>
-			</button>
 		</div>
 	</div>
 
@@ -33,9 +37,9 @@
 				{{> admin_product_description product=product}}
 			{{else}}
 				<i class="fa fa-times css-admin-form-close js-admin-form-close"></i>
-				<button class="css-admin-delete-button js-admin-delete-button">{{_ "delete_product"}}</button>
 				<h1>{{_ "update_product"}}</h1>
 				{{> admin_product_form product=product}}
+				<button class="css-admin-delete-button js-admin-delete-button">{{_ "delete_product"}}</button>
 			{{/unless}}
 
 		</div>

@@ -1,4 +1,15 @@
 Meteor.startup(function () {
+    // Search indeces
+    Meteor.users._ensureIndex({
+        "name":"text",
+        "address":"text"
+    });
+
+    Products._ensureIndex({
+        "category":"text",
+        "title":"text"
+    });
+
     // code to run on server at startup
     // Create dev users
     const init_users = [

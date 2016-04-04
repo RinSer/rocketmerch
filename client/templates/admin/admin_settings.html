@@ -16,8 +16,10 @@
 
 	<div class="css-admin-language">
 		<h2>{{_ "admin_language"}}</h2>
-		<div class="css-admin-language-button-active js-switch-to-english">{{_ "admin_english"}}</div>
-		<div class="css-admin-language-button js-switch-to-russian">{{_ "admin_russian"}}</div>
+		<div class="css-admin-language-buttons">
+			<div class="css-admin-language-button-active js-switch-to-english">{{_ "admin_english"}}</div>
+			<div class="css-admin-language-button js-switch-to-russian">{{_ "admin_russian"}}</div>
+		</div>
 	</div>
 
 </template>
@@ -32,18 +34,19 @@
 			<h1>{{_ "add_user"}}</h1>
 			{{> admin_user_form}}
 		</div>
-		<div class="css-admin-users-all">
-			{{#each user in users}}
-				{{> admin_user user=user}}
-			{{/each}}
-		</div>
 		<div class="css-admin-users-add">
 			{{#if currentUser.admin}}
 				<button class="css-admin-add-user-button jq-admin-add-user-button">
 					<span>{{_ "add_user"}}</span>
+					<br>
 					<i class="fa fa-plus css-admin-plus"></i>
 				</button>
 			{{/if}}
+		</div>
+		<div class="css-admin-users-all">
+			{{#each user in users}}
+				{{> admin_user user=user}}
+			{{/each}}
 		</div>
 	</div>
 

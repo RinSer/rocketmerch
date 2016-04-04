@@ -47,6 +47,27 @@ Template.admin_orders.onCreated(function() {
 
 });
 
+// On created admin_products
+Template.admin_products.onCreated(function() {
+
+	Session.set('product_search', false);
+
+});
+
+// Set initial view to product
+Template.admin_product.onCreated(function () {
+    // not update view
+    Session.set(this.data.product._id+"_update", false);
+    
+});
+
+// On created admin_clients
+Template.admin_clients.onCreated(function() {
+
+	Session.set('clients_search', false);
+
+});
+
 // Helpers for admin_orders
 Template.admin_orders.helpers({
 
@@ -90,6 +111,8 @@ Template.admin_order.helpers({
 
 	client:function() {
 
+		Meteor.subscribe('usersData', false);
+
 		const client_id = Template.instance().data.order.client;
 
 		const client = Meteor.users.findOne({_id: client_id});
@@ -99,6 +122,8 @@ Template.admin_order.helpers({
 	},
 
 	products:function() {
+
+		Meteor.subscribe('productsData', false);
 
 		const product_ids = Template.instance().data.order.products;
 
@@ -168,17 +193,12 @@ Template.admin_products.helpers({
 	// Show all products
 	products:function() {
 
+		Meteor.subscribe('productsData', Session.get('product_search'));
+
 		return Products.find({});
 
-	},
+	}
 
-});
-
-// Set initial view to product
-Template.admin_product.onCreated(function () {
-    // not update view
-    Session.set(this.data.product._id+"_update", false);
-    
 });
 
 // Helpers for admin_product
@@ -197,6 +217,8 @@ Template.admin_product.helpers({
 Template.admin_clients.helpers({
 
 	clients:function() {
+
+		Meteor.subscribe('usersData', Session.get('clients_search'));
 
 		return Meteor.users.find({client: true});
 
@@ -233,6 +255,7 @@ Template.admin_users.helpers({
 	users:function() {
 
 		if (Meteor.user().admin) {
+			Meteor.subscribe('usersData', false);
 			return Meteor.users.find({client: false});
 		} else {
 			return Meteor.users.find({_id:Meteor.user()._id});
@@ -345,6 +368,30 @@ Template.admin_order.events({
 
 });
 
+// Events for admin_products
+Template.admin_products.events({
+
+	// Search
+	'submit .js-admin-products-search': function(event) {
+
+		event.preventDefault();
+
+		var search_text = event.target.admin_products_search.value;
+
+		Session.set('product_search', search_text);
+
+	},
+
+	'click .js-admin-products-search-submit': function(event, template) {
+
+		event.preventDefault();
+
+		template.find('.js-admin-search-submit').click();
+
+	}
+
+});
+
 // Events for admin_product
 Template.admin_product.events({
 
@@ -439,6 +486,30 @@ Template.admin_product_form.events({
 				}
 			});
 		});
+
+	}
+
+});
+
+// Events for admin_clients
+Template.admin_clients.events({
+
+	// Search
+	'submit .js-admin-clients-search': function(event) {
+
+		event.preventDefault();
+
+		var search_text = event.target.admin_clients_search.value;
+
+		Session.set('clients_search', search_text);
+
+	},
+
+	'click .js-admin-clients-search-submit': function(event, template) {
+
+		event.preventDefault();
+
+		template.find('.js-admin-search-submit').click();
 
 	}
 
