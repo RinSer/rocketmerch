@@ -1,5 +1,20 @@
 // Template helpers
 
+// On rendered admin_header
+Template.admin_header.onRendered(function() {
+
+	if (window.screen.availWidth < 768) {
+		this.$('.jq-admin-menu').click(function() {
+			$('.css-admin-nav-list').slideToggle('slow');
+		});
+
+		this.$('.css-admin-nav-ul > a').click(function() {
+			$('.css-admin-nav-list').slideToggle('slow');
+		});
+	}
+
+});
+
 // On rendered admin_products
 Template.admin_products.onRendered(function() {
 
@@ -132,9 +147,11 @@ Template.admin_order.helpers({
 		_.each(product_ids, function(product_id) {
 
 			var product = Products.findOne({_id: product_id.title});
-			product.quantity = product_id.quantity;
-			product.total = Math.round(product.price*product_id.quantity*100)/100;
-			products.push(product);
+			if (product) {
+				product.quantity = product_id.quantity;
+				product.total = Math.round(product.price*product_id.quantity*100)/100;
+				products.push(product);
+			}
 
 		});
 
@@ -151,8 +168,10 @@ Template.admin_order.helpers({
 		_.each(product_ids, function(product_id) {
 
 			var product = Products.findOne({_id: product_id.title});
-			var product_total = Math.round(product.price*product_id.quantity*100)/100;
-			total += product_total;
+			if (product) {
+				var product_total = Math.round(product.price*product_id.quantity*100)/100;
+				total += product_total;
+			}
 
 		});
 

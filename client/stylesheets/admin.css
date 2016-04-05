@@ -54,12 +54,18 @@ h1 {
 
 }
 
+.css-admin-logo {
+
+	float: left;
+	cursor: pointer;
+
+}
+
 /*** Admin Login Form ***/
 
 .css-admin-login {
 
 	float: right;
-	clear: left;
 	color: white;
 	position: fixed;
 	right: 25px;
@@ -116,7 +122,6 @@ h1 {
 
 .css-admin-signOut {
 
-	text-align: right;
 	cursor: pointer;
 
 }
@@ -148,7 +153,8 @@ h1 {
 input.css-admin-search {
 
 	border: 1px solid #aaa;
-	font-size: 1.2em;
+	font-size: 1.25em;
+	max-width: 80%;
 
 }
 
@@ -323,10 +329,6 @@ tr.css-admin-order-products-head:hover {
 	border: 1px solid #aaa;
 	text-align: center;
 
-}
-
-.css-admin-product:nth-child(3n+1) {
-	clear: both;
 }
 
 .css-admin-product:hover {
@@ -616,30 +618,10 @@ label.css-admin-product-img-upload input[type="file"] {
 
 /*** Responsive decisions ***/
 
-@media (min-width: 769px) {
-
-	.css-admin-menu-rocket {
-
-		display: none;
-
-	}
-
-	.css-admin-nav-ul {
-
-		display: block;
-		margin: 0;
-		color: #fff;
-		text-align: center;
-		padding-top: 40px;
-		padding-left: 0;
-
-	}
-
+@media (min-width: 993px) {
 
 	.css-admin-nav-ul li {
 
-		display: inline;
-		text-align: center;
 		padding: 25px;
 
 	}
@@ -651,14 +633,93 @@ label.css-admin-product-img-upload input[type="file"] {
 
 	}
 
+	.css-admin-product:nth-child(3n+1) {
+
+		clear: both;
+
+	}
+
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+
+	.css-admin-nav-ul li:nth-child(4) {
+
+		clear: left;
+
+	}
+
+	.css-admin-nav-ul li {
+
+		padding: 5px 25px;
+
+	}
+
+
+	.css-admin-product {
+
+		width: 50%;
+
+	}
+
+	.css-admin-product:nth-child(odd) {
+		
+		clear: both;
+
+	}
+
+
+}
+
+@media (min-width: 768px) {
+
+	.css-admin-menu-rocket {
+
+		display: none;
+		float: left;
+
+	}
+
+	.css-admin-nav-ul {
+
+		display: block;
+		list-style-type: none;
+		margin: 0;
+		color: #fff;
+		padding-top: 15px;
+		padding-left: 25px;
+		float: left;
+		
+	}
+
+	.css-admin-nav-ul li {
+
+		display: inline;
+		text-align: center;
+		float: left;
+
+	}
+
+	.css-admin-signOut {
+
+		text-align: right;
+
+	}
+
+	.css-admin-login-mob {
+
+		display: none;
+
+	}
+
+}
+
+@media (max-width: 767px) {
 
 	.css-admin-menu-rocket {
 
 		color: #fff;
-		font-size: 3em;
+		font-size: 3em!important;
 		margin-top: 25px;
 		margin-right: 25px;
 		float: right;
@@ -670,6 +731,8 @@ label.css-admin-product-img-upload input[type="file"] {
 
 		margin-top: 100px;
 		background-color: #222;
+		width: 100%;
+		display: none;
 
 	}
 
@@ -679,7 +742,7 @@ label.css-admin-product-img-upload input[type="file"] {
 		margin: 0 auto;
 		color: #fff;
 		text-align: center;
-		padding: 25px 0;
+		padding: 25px 0 0 0;
 
 	}
 
@@ -694,6 +757,22 @@ label.css-admin-product-img-upload input[type="file"] {
 	.css-admin-login {
 
 		display: none;
+
+	}
+
+	.css-admin-login-mob {
+
+		color: #fff;
+		text-align: center;
+		margin: 0 auto;
+		padding: 20px 0;
+		background-color: #222;
+
+	}
+
+	.css-admin-login-mob > p {
+
+		margin: 0;
 
 	}
 
